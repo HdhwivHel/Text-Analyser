@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Analyser</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="bg-slate-300">
+    <div class="flex items-center justify-center h-screen">
+        <div class="bg-white p-14 shadow-md shadow-slate-400 rounded-lg max-w-md w-full">
+	        <h1 class="text-center text-2xl font-bold font-serif  ">Enter text to analyse</h1>
+            <div class="mx-5">
+              <form action='/analyze' method='post'>
+                {% csrf_token %}
+                <textarea name="text"  style=" width:300px; height:70px;" placeholder="Enter Text.." class=" border-2 border-neutral-950 rounded-lg my-5 font-sans px-2 py-1"></textarea>
+                <input type="checkbox" class=" mb-3" name="removepunc"> Remove Special Characters</input><br>
+                <input type="checkbox" class="  mb-3" name="fullcaps" > UPPERCASE</input><br>
+                <input type="checkbox" class="  mb-3" name="whitespace" > Remove whitespace</input>
+                <br>
+                <button type="submit" class="border border-black px-2 py-1 rounded-lg bg-slate-400 text-black hover:bg-black hover:text-white">Analyse Text</button>
+              </form>
+            </div>
+          </div>
+        </body>
+</html>
