@@ -8,19 +8,26 @@
     <title>Analyser</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body class="bg-slate-300">
+  <body class="bg-slate-400">
     <div class="flex items-center justify-center h-screen">
-        <div class="bg-white p-14 shadow-md shadow-slate-400 rounded-lg max-w-md w-full">
+        <div class="bg-gray-100 p-14 shadow-md shadow-slate-400 rounded-lg max-w-lg w-full">
 	        <h1 class="text-center text-2xl font-bold font-serif  ">Enter text to analyse</h1>
-            <div class="mx-5">
+            <div class=" text-justify">
               <form action='/analyze' method='post'>
                 {% csrf_token %}
-                <textarea name="text"  style=" width:300px; height:70px;" placeholder="Enter Text.." class=" border-2 border-neutral-950 rounded-lg my-5 font-sans px-2 py-1"></textarea>
-                <input type="checkbox" class=" mb-3" name="removepunc"> Remove Special Characters</input><br>
-                <input type="checkbox" class="  mb-3" name="fullcaps" > UPPERCASE</input><br>
-                <input type="checkbox" class="  mb-3" name="whitespace" > Remove whitespace</input>
+                <div class="text-[20px] font-serif font-semibold">
+                  <div class="text-center">
+                  <textarea name="text"  style=" width:300px; height:100px;" placeholder="Enter Text.." class=" border-3 border-neutral-950 rounded-lg my-5 font-sans px-3 py-1 shadow-lg bg-white"></textarea>
+                  </div>
+                  
+                  <input type="checkbox" class=" mb-3 " name="num"> Remove Numbers</input><br>
+                  <input type="checkbox" class=" mb-3" name="alph"> Remove Letters</input><br>
+                  <input type="checkbox" class=" mb-3" name="removepunc"> Remove Special Characters</input><br>
+                  <input type="checkbox" class="  mb-3" name="fullcaps" > Convert to Uppercase</input><br>
+                  <input type="checkbox" class="  mb-3" name="whitespace" > Remove Whitespace</input>
+                </div>  
                 <br>
-                <button type="submit" class="border border-black px-2 py-1 rounded-lg bg-slate-400 text-black hover:bg-black hover:text-white">Analyse Text</button>
+                <button type="submit" class="border border-black px-2 py-1 rounded-lg bg-gray-300 text-black hover:bg-black hover:text-white font-bold shadow-lg">Analyse Text</button>
               </form>
             </div>
           </div>

@@ -10,7 +10,11 @@ def analyze(request):
     removepunc =  (request.POST.get('removepunc','off'))
     fullcaps =  (request.POST.get('fullcaps','off'))
     whitespace =  (request.POST.get('whitespace','off'))
+    num = request.POST.get('num','off')
+    alph = request.POST.get('alph','off')
     # analyzed = djtext
+
+    
     if removepunc == "on":
         punctuations = '''!()-[]}{;:'"\,<>./?@#$%^&*_~'''
         analyzed =""
@@ -24,6 +28,8 @@ def analyze(request):
         djtext=analyzed
         # return render(request, 'analyze.html', params)
    
+
+
     if fullcaps == "on":
         analyzed=""
         analyzed = djtext.upper()
@@ -33,6 +39,8 @@ def analyze(request):
         djtext=analyzed
         # return render(request, 'analyze.html', params)
     
+
+
     if whitespace == "on":
         analyzed=""
         whitespace = " "
@@ -45,8 +53,36 @@ def analyze(request):
         djtext=analyzed
         # return render(request, 'analyze.html', params)
 
-    if whitespace=="off" and fullcaps== "off" and removepunc =="off" :
+
+
+    if num == "on":
+        analyzed=""
+        for char in djtext:
+            if not char.isdigit():
+                analyzed = analyzed + char
+        params={
+         'analyzed_text':analyzed
+        }
+        djtext=analyzed
+        # return render(request, 'analyze.html', params)
+
+
+    if alph == "on":
+        analyzed=""
+        for char in djtext:
+            if not char.isalpha():
+                analyzed = analyzed + char
+        params={
+         'analyzed_text':analyzed
+        }
+        djtext=analyzed
+        # return render(request, 'analyze.html', params)
+
+
+    if whitespace=="off" and fullcaps== "off" and removepunc =="off" and num == "off"  and alph=="off":
         return error(request)
+    
+
     
     if (request.POST.get('text','default')) in "  ":
         return error(request)
